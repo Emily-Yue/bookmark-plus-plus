@@ -53,15 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
             while (paras[0]) {
                 paras[0].parentNode.removeChild(paras[0])
             }
-            // Iterate through your data and create the elements
-            // and append them to the container
-            // data.forEach(i => {
-            // // const element = document.createElement('div');
-            // // element.innerText = i.name;
-            // // container.append(element);
-            // document.body.appendChild(i)
-            // });
-            // console.log("Data: " + data)
+            
             for (const d of data) {
                 if (d instanceof HTMLDivElement) {
                     document.body.appendChild(d)
@@ -111,7 +103,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             // Filter your list of data
             // based off the searchTerm
-            //const data = items.filter(i => i.name.toLowerCase().includes(searchTerm.toLowerCase()));
             const allWebsiteBlocks = document.getElementsByClassName("websiteBlock")
             //console.log(allWebsiteBlocks)
             const filteredWebsites = Array.prototype.filter.call(allWebsiteBlocks, function(webBlock) {
@@ -124,50 +115,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     webBlock.childNodes[0].innerHTML.includes(searchTerm) || isFound
                 )
             })
-            // const allWebsiteBlocks = []
-            // for (const wb of allWebsiteBlocks)
             
             // Pass the list filtered list of data to your makeList function
             // to generate your html
-            //console.log(filteredWebsites)
             makeList(filteredWebsites);
         });
         
         // Generate your initial list
         makeList(items.data);
-
-
-        // const input = document.getElementById("query")
-        // input.addEventListener("keyup", e => {
-        //     const searchString = e.target.value
-        //     console.log(searchString)
-        //     const allWebsiteBlocks = document.getElementsByClassName("websiteBlock")
-            // const filteredWebsites = Array.prototype.filter.call(allWebsiteBlocks, function(webBlock) {
-            //     var currTags = webBlock.getElementsByClassName("tag")
-            //     var isFound = false
-            //     for(var tag of currTags){
-            //         isFound = isFound || tag.innerHTML.includes(searchString)
-            //     }
-            //     console.log(isFound)
-            //     return (
-            //         webBlock.childNodes[0].innerHTML.includes(searchString) || isFound
-            //     )
-            // })
-        //     console.log("filteredWesbites next")
-        //     console.log(filteredWebsites)
-        //     //document.querySelectorAll('websiteBlock').forEach(e => e.remove())
-        //     var paras = document.getElementsByClassName("websiteBlock")
-
-        //     while (paras[0]) {
-        //         paras[0].parentNode.removeChild(paras[0])
-        //     }
-            // for (const value of filteredWebsites) {
-            //     // console.log(value)
-            //     // var div = document.createElement("div")
-            //     // div.setAttribute("class", "websiteBlock")
-            //     document.body.appendChild(value)
-            // }
         
     })
-    //chrome.storage.local.clear()
+    // chrome.storage.sync.clear()
 }, false)

@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
             timeCreated: currentTime, 
             tags: tagsList
         }
-
+        //chrome.storage.sync.clear()
         chrome.storage.sync.get(function(items) {
             if (Object.keys(items).length > 0 && items.data) {
                 // The data array already exists, add to it the new server and nickname
