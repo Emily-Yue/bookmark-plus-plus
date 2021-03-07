@@ -89,7 +89,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById("titleInput").remove()
             document.getElementById("tagInput").remove()
 
-           
 
     }
 }, false)
