@@ -11,7 +11,8 @@
     ],
     "browser_action":{
         "default_popup": "popup.html",
-        "default_title": "add a link"
+        "default_title": "add a link",
+        "default_icon": "/res/bppLogo.png"
     },
     "permissions": ["tabs", "storage"]
 
