@@ -5,6 +5,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
     //     url = tabs[0].url;
     // })
     console.log(request)
-    sendResponse({link: request.url})
+    sendResponse({
+        link: request.url,
+        title: request.title
+    })
 })
 
