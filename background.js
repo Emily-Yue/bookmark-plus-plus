@@ -1,8 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     allBookmarks = []
-    chrome.storage.sync.get(null, function(items) {
+    chrome.storage.sync.get(function(items) {
         console.log(items) 
-        for (const value of Object.values(items)) {
+        var bookmarks = items.data
+        for (const value of bookmarks) {
+
             //console.log(value.url)
             var div = document.createElement("div")
             div.textContent = value.url
