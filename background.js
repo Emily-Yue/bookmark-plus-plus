@@ -8,20 +8,42 @@ document.addEventListener('DOMContentLoaded', function() {
         searchBar.setAttribute("type","search")
         searchBar.setAttribute("id","query")
         searchBar.setAttribute("placeholder","Search...")
-        searchBar.setAttribute("name","q")
+        searchBar.setAttribute("name","Search")
         document.body.appendChild(searchBar)
         // add search button
         const searchBarButton = document.createElement("button")
         searchBarButton.setAttribute("id","search_bar_button")
-        searchBarButton.innerHTML = "q"
+        searchBarButton.innerHTML = "Search"
         document.body.appendChild(searchBarButton)
 
         for (const value of bookmarks) {
             //console.log(value.url)
             var div = document.createElement("div")
-            div.textContent = value.url
+            div.setAttribute("class", "websiteBlock")
+
+            var a = document.createElement("a")
+            a.setAttribute("href", value.url)
+            a.setAttribute("class", "link")
+            a.innerHTML = value.title
+            div.appendChild(a)
+            var br = document.createElement("br")
+            div.appendChild(br)
+
+            var br1 = document.createElement("br")
+            div.appendChild(br1)
+            
+            var tagsList = value.tags
+            for(var tag of tagsList){
+                var divTag = document.createElement("div")
+                divTag.setAttribute("class", "tag")
+                divTag.innerHTML = tag
+                div.appendChild(divTag)
+            }
+            //div.textContent = value.url
             document.body.appendChild(div)
         }
+
+
         // Object.keys(items).forEach(function (bookmark){
         //     //console.log(items.length)
             

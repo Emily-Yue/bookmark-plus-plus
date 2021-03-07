@@ -61,10 +61,10 @@ body{
 
 #titleInput{
     font-family: 'Roboto Slab', serif;
-    margin: 0 auto;
-    display: block;
+        margin: 0 auto;
+        display: block;
     height: 31px;
-    width: 164px;
+    width: 241px;
     border-radius: 3px;
     text-align: center;
 }
