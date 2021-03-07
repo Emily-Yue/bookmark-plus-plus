@@ -13,8 +13,6 @@
         "default_popup": "popup.html",
         "default_title": "add a link"
     },
-    "permissions": [
-        "tabs"
-    ]
+    "permissions": ["tabs", "storage"]
 
 }

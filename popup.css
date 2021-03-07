@@ -1,0 +1,19 @@
+body{
+    background-color: aquamarine;
+    min-width: 370px;
+    min-height: 400px;
+
+}
+
+#add{
+    margin: 0 auto;
+    display:block;
+}
+#seeAll {
+    margin: 0 auto;
+    display:block;
+}
+
+/* input{
+    color: lightgray;
+} */

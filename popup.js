@@ -6,31 +6,72 @@ document.addEventListener('DOMContentLoaded', function() {
             chrome.tabs.sendMessage(tabs[0].id, tabs[0], getInfo)
         })
     }
+
+    //all bookmarks, should open up a seperate page
+    document.getElementById('seeAll').addEventListener('click', onclick3, false)
+    function onclick3(){
+        chrome.tabs.create({url: 'background.html'})
+    }
+
     //function that get's the link and title, also makes the form
     function getInfo(res){
         //remove the add link button
         document.getElementById("add").remove()
+        
+        //url input, should auto fill for them
+        const inputUrl = document.createElement("input")
+        inputUrl.setAttribute("type", "url");
+        inputUrl.setAttribute("id", "urlInput");
+        console.log(res)
+        inputUrl.value = `${res.link}`
+        document.body.appendChild(inputUrl);
+
+        //title input
         const inputTitle = document.createElement("input")
         inputTitle.setAttribute("type", "text");
-        inputTitle.value = res.title
+        inputTitle.setAttribute("id", "titleInput");
+        inputTitle.value = `${res.title}`
+        //inputTitle.setAttribute("placeholder", `${res.title}`);
         document.body.appendChild(inputTitle);
+        
+        //tags input
         const inputTags = document.createElement("input")
         inputTags.setAttribute("type", "text")
-        inputTags.value = "tag1, tag2, tag3"
+        inputTags.setAttribute("id", "tagInput");
+        inputTags.setAttribute("placeholder", "tags1, tags2, tags3")
         document.body.appendChild(inputTags);
+       
+        //submit button
         const submitButton = document.createElement("button")
         submitButton.setAttribute("id", "submit")
-        // submitButton.setAttribute("onclick", "onclick2()")
         submitButton.innerHTML = "Submit"
         document.body.appendChild(submitButton)
         document.getElementById('submit').addEventListener('click', onclick2, false)
-        // const div = document.createElement('div')
-        // div.textContent = `${res.link}`
-        // document.body.appendChild(div)
+
     }
     
     function onclick2() {
-        console.log("bitkldsjfas")
-        document.getElementById("submit").remove()
+        var updated = false
+        var currentTime= new Date();
+        var tagsList = document.getElementById("tagInput").value.split(",");
+        //var timeFormat = currentTime.getMonth() + "/" + currentTime.getDate() + "/" + currentTime.getFullYear();
+        var uniqueId = Date.now()
+        var bookmark = {
+            title: document.getElementById("titleInput").value, 
+            url: document.getElementById("urlInput").value,
+            key: uniqueId,
+            timeCreated: currentTime, 
+            tags: tagsList
+        }
+        if(!updated){
+            chrome.storage.local.set({uniqueId, bookmark}, function() {
+                //clear everything but see all bookmarks page
+                console.log("this is line 67")
+                document.getElementById("submit").remove()
+                document.getElementById("titleInput").remove()
+                document.getElementById("tagInput").remove()
+                updated = true
+            })
+        }
     }
 }, false)
