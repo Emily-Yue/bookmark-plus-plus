@@ -1,10 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
-    allBookmarks = []
     chrome.storage.sync.get(function(items) {
         console.log(items) 
         var bookmarks = items.data
-        for (const value of bookmarks) {
 
+        // add input box of search bar
+        const searchBar = document.createElement("input")
+        searchBar.setAttribute("type","search")
+        searchBar.setAttribute("id","query")
+        searchBar.setAttribute("placeholder","Search...")
+        searchBar.setAttribute("name","q")
+        document.body.appendChild(searchBar)
+        // add search button
+        const searchBarButton = document.createElement("button")
+        searchBarButton.setAttribute("id","search_bar_button")
+        searchBarButton.innerHTML = "q"
+        document.body.appendChild(searchBarButton)
+
+        for (const value of bookmarks) {
             //console.log(value.url)
             var div = document.createElement("div")
             div.textContent = value.url
@@ -22,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
         //     console.log(div.textContent)
         //     document.body.appendChild(div)
         // })
+        
     })
     //chrome.storage.local.clear()
 }, false)
