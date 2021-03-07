@@ -50,8 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     }
     
-    function onclick2() {
-        var updated = false
+    function onclick2() { 
         var currentTime= new Date();
         var tagsList = document.getElementById("tagInput").value.split(",");
         //var timeFormat = currentTime.getMonth() + "/" + currentTime.getDate() + "/" + currentTime.getFullYear();
@@ -63,15 +62,11 @@ document.addEventListener('DOMContentLoaded', function() {
             timeCreated: currentTime, 
             tags: tagsList
         }
-        if(!updated){
-            chrome.storage.local.set({uniqueId, bookmark}, function() {
-                //clear everything but see all bookmarks page
-                console.log("this is line 67")
-                document.getElementById("submit").remove()
-                document.getElementById("titleInput").remove()
-                document.getElementById("tagInput").remove()
-                updated = true
-            })
-        }
+        chrome.storage.sync.set({uniqueId: bookmark}, function() {
+            //clear everything but see all bookmarks page
+            document.getElementById("submit").remove()
+            document.getElementById("titleInput").remove()
+            document.getElementById("tagInput").remove()
+        })
     }
 }, false)
