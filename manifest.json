@@ -5,9 +5,16 @@
     "description": "an better bookmark system", 
     "content_scripts": [ 
         {
-        "matches": ["<all_urls>"], 
-        "js": ["content.js"]
+            "matches": ["<all_urls>"], 
+            "js": ["content.js"] //"jquery-2.1.3.min.js",
         }
+    ],
+    "browser_action":{
+        "default_popup": "popup.html",
+        "default_title": "add a link"
+    },
+    "permissions": [
+        "tabs"
     ]
 
 }
