@@ -25,6 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log(res)
         inputUrl.value = `${res.link}`
         document.body.appendChild(inputUrl);
+        const br1 = document.createElement("br")
+        document.body.appendChild(br1)
 
         //title input
         const inputTitle = document.createElement("input")
@@ -33,20 +35,26 @@ document.addEventListener('DOMContentLoaded', function() {
         inputTitle.value = `${res.title}`
         //inputTitle.setAttribute("placeholder", `${res.title}`);
         document.body.appendChild(inputTitle);
-        
+        const br2 = document.createElement("br")
+        document.body.appendChild(br2)
+
         //tags input
         const inputTags = document.createElement("input")
         inputTags.setAttribute("type", "text")
         inputTags.setAttribute("id", "tagInput");
         inputTags.setAttribute("placeholder", "tags1, tags2, tags3")
         document.body.appendChild(inputTags);
-       
+        const br3 = document.createElement("br")
+        document.body.appendChild(br3)
+
         //submit button
         const submitButton = document.createElement("button")
         submitButton.setAttribute("id", "submit")
         submitButton.innerHTML = "Submit"
         document.body.appendChild(submitButton)
         document.getElementById('submit').addEventListener('click', onclick2, false)
+        const br4 = document.createElement("br")
+        document.body.appendChild(br4)
 
     }
     
